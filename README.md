@@ -22,7 +22,7 @@ A dark graphite style for ChatGPT designed for Stylus. Changes the main interfac
 
 ### Stylus
 
-1. Install the Stylus browser extension.
+1. Install the [Stylus browser extension](https://chromewebstore.google.com/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne) from the Chrome Web Store.
 2. Open the raw `chatgpt-graphite.user.css` file from this repository.
 3. Stylus should offer to install the userstyle.
 4. Save the style and reload ChatGPT.
