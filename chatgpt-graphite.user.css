@@ -1,0 +1,234 @@
+/* ==UserStyle==
+@name           ChatGPT Graphite for Stylus
+@namespace      github.com/VicDavis/chatgpt-graphite-for-stylus
+@version        1.0.0
+@description    A dark graphite style for ChatGPT designed for Stylus. Changes the main interface colors, backgrounds, user messages, text composer, and selected controls.
+@author         VicDavis
+@license        MIT
+@homepageURL    https://github.com/VicDavis/chatgpt-graphite-for-stylus
+@supportURL     https://github.com/VicDavis/chatgpt-graphite-for-stylus/issues
+@updateURL      https://raw.githubusercontent.com/VicDavis/chatgpt-graphite-for-stylus/main/chatgpt-graphite.user.css
+==/UserStyle== */
+
+@-moz-document domain("chatgpt.com") {
+
+    /* Theme palette */
+    :root {
+        --cg-bg: #1F1F1E;
+        --cg-user-message: #2B2B2A;
+        --cg-composer-bg: #1B1B1A;
+        --cg-composer-border: #50504D;
+        --cg-new-chat-bg: #171716;
+        --cg-new-chat-hover: #1B1B1A;
+        --cg-new-chat-border: #2C2C2A;
+        --cg-new-chat-border-hover: #3A3A37;
+        --cg-accent: #C7D2FF;
+        --cg-accent-hover: #E2E7FF;
+    }
+
+    :root,
+    html,
+    html.dark,
+    html[data-oled],
+    html.dark[data-oled] {
+        --main-surface-primary: var(--cg-bg) !important;
+        --main-surface-secondary: var(--cg-bg) !important;
+        --main-surface-tertiary: var(--cg-bg) !important;
+
+        --sidebar-surface-primary: var(--cg-bg) !important;
+        --sidebar-surface-secondary: var(--cg-bg) !important;
+
+        --bg-primary: var(--cg-bg) !important;
+        --bg-secondary: var(--cg-bg) !important;
+        --bg-elevated-primary: var(--cg-bg) !important;
+        --bg-elevated-secondary: var(--cg-bg) !important;
+
+        --composer-surface-primary: var(--cg-bg) !important;
+        --message-surface: var(--cg-user-message) !important;
+    }
+
+    html,
+    body,
+    #root,
+    main,
+    #page-header,
+    #thread,
+    #thread-bottom,
+    #thread-bottom > div,
+    [data-scroll-root],
+    [class*="bg-token-main-surface"],
+    [class*="bg-token-sidebar-surface"] {
+        background-color: var(--cg-bg) !important;
+    }
+
+    /* Bottom area around the composer */
+    #thread-bottom,
+    #thread-bottom > div,
+    main [class*="bottom-0"],
+    main [class*="sticky"] {
+        background-color: var(--cg-bg) !important;
+        background-image: none !important;
+    }
+
+    /* Elements explicitly using a black background */
+    .bg-black {
+        background-color: var(--cg-bg) !important;
+    }
+
+    /* Sidebar surfaces */
+    aside,
+    nav,
+    aside * {
+        --sidebar-surface-primary: var(--cg-bg) !important;
+        --sidebar-surface-secondary: var(--cg-bg) !important;
+    }
+
+    aside > div:first-child,
+    aside > div:last-child,
+    aside [class*="sticky"],
+    aside [class*="top-0"],
+    aside [class*="bottom-0"],
+    aside [class*="bg-black"],
+    aside [class*="from-black"],
+    aside [class*="to-black"],
+    aside [class*="sidebar"] {
+        background-color: var(--cg-bg) !important;
+        background-image: none !important;
+        box-shadow: none !important;
+    }
+
+    aside [class*="sticky"] > div,
+    aside [class*="top-0"] > div,
+    aside [class*="bottom-0"] > div {
+        background-color: var(--cg-bg) !important;
+        background-image: none !important;
+    }
+
+    aside *::before,
+    aside *::after {
+        background-image: none !important;
+    }
+
+    aside header,
+    aside footer {
+        background-color: var(--cg-bg) !important;
+        background-image: none !important;
+    }
+
+    /* Remove the dark pill/glow around the thread disclaimer */
+    html.dark [data-testid="thread-disclaimer"] .rounded-full {
+        background: transparent !important;
+        background-color: transparent !important;
+        background-image: none !important;
+        box-shadow: none !important;
+        filter: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+
+    html.dark [data-testid="thread-disclaimer"] .rounded-full::before,
+    html.dark [data-testid="thread-disclaimer"] .rounded-full::after {
+        background: transparent !important;
+        background-color: transparent !important;
+        background-image: none !important;
+        box-shadow: none !important;
+        filter: none !important;
+        content: none !important;
+    }
+
+    /* Keep the lower thread container graphite */
+    html.dark #thread-bottom-container,
+    html.dark #thread-bottom-container::before,
+    html.dark #thread-bottom-container::after {
+        background: var(--cg-bg) !important;
+        background-color: var(--cg-bg) !important;
+        background-image: none !important;
+        box-shadow: none !important;
+
+        --tw-gradient-from: var(--cg-bg) !important;
+        --tw-gradient-via: var(--cg-bg) !important;
+        --tw-gradient-to: var(--cg-bg) !important;
+        --tw-gradient-stops: var(--cg-bg), var(--cg-bg) !important;
+    }
+
+    /* User message bubbles */
+    [data-message-author-role="user"] [class*="bg-token-message-surface"],
+    [data-message-author-role="user"] .user-message-bubble-color {
+        background: var(--cg-user-message) !important;
+        background-color: var(--cg-user-message) !important;
+        background-image: none !important;
+    }
+
+    /* Voice mode top panel */
+    [data-testid="voice-floating-orb"] .bg-surface-primary {
+        background: var(--cg-bg) !important;
+        background-color: var(--cg-bg) !important;
+        background-image: none !important;
+    }
+
+    /* Share and conversation menu */
+    #conversation-header-actions {
+        background: var(--cg-bg) !important;
+        background-color: var(--cg-bg) !important;
+        background-image: none !important;
+        box-shadow: none !important;
+    }
+
+    #conversation-header-actions [data-testid="share-chat-button"],
+    #conversation-header-actions [data-testid="conversation-options-button"] {
+        background: transparent !important;
+        background-color: transparent !important;
+    }
+
+    #conversation-header-actions [data-testid="share-chat-button"]:hover,
+    #conversation-header-actions [data-testid="conversation-options-button"]:hover {
+        background: var(--cg-user-message) !important;
+        background-color: var(--cg-user-message) !important;
+    }
+
+    /* New chat button */
+    [data-testid="create-new-chat-button"] {
+        color: var(--cg-accent) !important;
+        font-weight: 600 !important;
+        background: var(--cg-new-chat-bg) !important;
+        background-color: var(--cg-new-chat-bg) !important;
+        border: 1px solid var(--cg-new-chat-border) !important;
+        border-radius: 10px !important;
+    }
+
+    [data-testid="create-new-chat-button"] svg {
+        color: var(--cg-accent) !important;
+    }
+
+    [data-testid="create-new-chat-button"]:hover {
+        color: var(--cg-accent-hover) !important;
+        background: var(--cg-new-chat-hover) !important;
+        background-color: var(--cg-new-chat-hover) !important;
+        border-color: var(--cg-new-chat-border-hover) !important;
+    }
+
+    [data-testid="create-new-chat-button"]:hover svg {
+        color: var(--cg-accent-hover) !important;
+    }
+
+    /* Suggestion list on a new chat */
+    main div.bg-surface-primary:has(> ul.w-full.flex-col) {
+        background: transparent !important;
+        background-color: transparent !important;
+        background-image: none !important;
+        box-shadow: none !important;
+    }
+
+    /* Composer */
+    div:has(> [data-composer-grid]) {
+        background: var(--cg-composer-bg) !important;
+        background-color: var(--cg-composer-bg) !important;
+        box-shadow: inset 0 0 0 1px var(--cg-composer-border) !important;
+        border-radius: 28px !important;
+    }
+
+    [data-composer-grid] {
+        background: transparent !important;
+        background-color: transparent !important;
+    }
+}
