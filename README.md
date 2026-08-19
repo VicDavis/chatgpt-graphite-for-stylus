@@ -2,6 +2,12 @@
 
 A dark graphite style for ChatGPT designed for Stylus. Changes the main interface colors, backgrounds, user messages, text composer, and selected controls.
 
+## Comparison
+
+| Graphite Off | Graphite On |
+| --- | --- |
+| ![Graphite Off](graphite-off.png) | ![Graphite On](graphite-on.png) |
+
 ## Features
 
 - Graphite page and sidebar backgrounds
