@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           ChatGPT Graphite by Vic
 @namespace      github.com/VicDavis/chatgpt-graphite-for-stylus
-@version        1.0.1
+@version        1.0.2
 @description    A dark graphite style for ChatGPT designed for Stylus. Changes the main interface colors, backgrounds, user messages, text composer, and selected controls.
 @author         VicDavis
 @license        MIT
@@ -115,6 +115,20 @@
         background-image: none !important;
     }
 
+    /* Sidebar section titles */
+    h2.menu-label,
+    h2[class*="menu-label"] {
+        color: #777773 !important;
+        -webkit-text-fill-color: #777773 !important;
+        opacity: 1 !important;
+    }
+
+    /* Sidebar buttons cursor */
+    nav button,
+    nav button * {
+        cursor: pointer !important;
+    }
+
     /* Remove the dark pill/glow around the thread disclaimer */
     html.dark [data-testid="thread-disclaimer"] .rounded-full {
         background: transparent !important;
@@ -184,6 +198,44 @@
     #conversation-header-actions [data-testid="conversation-options-button"]:hover {
         background: var(--cg-user-message) !important;
         background-color: var(--cg-user-message) !important;
+    }
+
+    /* Share button: icon only, hard-centered */
+    [data-testid="share-chat-button"] {
+        position: relative !important;
+        width: 44px !important;
+        height: 44px !important;
+        padding: 0 !important;
+        gap: 0 !important;
+        font-size: 0 !important;
+    }
+
+    [data-testid="share-chat-button"] svg {
+        position: absolute !important;
+        left: 50% !important;
+        top: 50% !important;
+        margin: 0 !important;
+        transform: translate(-50%, -50%) !important;
+    }
+
+    /* Share notification toast */
+    .toast-root [role="alert"] {
+        background: var(--cg-composer-bg) !important;
+        background-color: var(--cg-composer-bg) !important;
+        color: #ECECEC !important;
+        border-color: var(--cg-composer-border) !important;
+        box-shadow:
+            0 0 0 1px rgba(199, 210, 255, 0.08),
+            0 0 14px rgba(199, 210, 255, 0.10) !important;
+    }
+
+    .toast-root [role="alert"] .flex-1,
+    .toast-root [role="alert"] .flex-1 * {
+        color: #ECECEC !important;
+    }
+
+    .toast-root [role="alert"] svg {
+        color: #D8D8D6 !important;
     }
 
     /* New chat button */
