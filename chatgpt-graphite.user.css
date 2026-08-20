@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           ChatGPT Graphite by Vic
 @namespace      github.com/VicDavis/chatgpt-graphite-for-stylus
-@version        1.0.2
+@version        1.0.3
 @description    A dark graphite style for ChatGPT designed for Stylus. Changes the main interface colors, backgrounds, user messages, text composer, and selected controls.
 @author         VicDavis
 @license        MIT
@@ -24,6 +24,10 @@
         --cg-new-chat-border-hover: #3A3A37;
         --cg-accent: #C7D2FF;
         --cg-accent-hover: #E2E7FF;
+        --cg-text: #ECECEC;
+        --cg-text-soft: #D8D8D6;
+        --cg-citation-bg: #2B2B2A;
+        --cg-citation-hover: #343432;
     }
 
     :root,
@@ -222,7 +226,7 @@
     .toast-root [role="alert"] {
         background: var(--cg-composer-bg) !important;
         background-color: var(--cg-composer-bg) !important;
-        color: #ECECEC !important;
+        color: var(--cg-text) !important;
         border-color: var(--cg-composer-border) !important;
         box-shadow:
             0 0 0 1px rgba(199, 210, 255, 0.08),
@@ -231,11 +235,11 @@
 
     .toast-root [role="alert"] .flex-1,
     .toast-root [role="alert"] .flex-1 * {
-        color: #ECECEC !important;
+        color: var(--cg-text) !important;
     }
 
     .toast-root [role="alert"] svg {
-        color: #D8D8D6 !important;
+        color: var(--cg-text-soft) !important;
     }
 
     /* New chat button */
@@ -282,5 +286,133 @@
     [data-composer-grid] {
         background: transparent !important;
         background-color: transparent !important;
+    }
+
+    /* Source citation pill */
+    .webpage-citation-pill,
+    [data-testid="webpage-citation-pill"] {
+        --text-primary: var(--cg-citation-hover) !important;
+        --main-surface-primary: var(--cg-text) !important;
+    }
+
+    .webpage-citation-pill > a,
+    [data-testid="webpage-citation-pill"] > a {
+        background: var(--cg-citation-bg) !important;
+        background-color: var(--cg-citation-bg) !important;
+        background-image: none !important;
+        color: var(--cg-text-soft) !important;
+        -webkit-text-fill-color: var(--cg-text-soft) !important;
+        border-radius: 9999px !important;
+        border: 0 !important;
+        outline: 0 !important;
+        box-shadow: none !important;
+    }
+
+    .webpage-citation-pill > a[class*="bg-token-text-primary"],
+    [data-testid="webpage-citation-pill"] > a[class*="bg-token-text-primary"] {
+        background: var(--cg-citation-bg) !important;
+        background-color: var(--cg-citation-bg) !important;
+        color: var(--cg-text-soft) !important;
+        -webkit-text-fill-color: var(--cg-text-soft) !important;
+    }
+
+    .webpage-citation-pill > a *,
+    [data-testid="webpage-citation-pill"] > a * {
+        background-color: transparent !important;
+        background-image: none !important;
+        color: inherit !important;
+        -webkit-text-fill-color: inherit !important;
+    }
+
+    .webpage-citation-pill > a::before,
+    .webpage-citation-pill > a::after,
+    .webpage-citation-pill > a *::before,
+    .webpage-citation-pill > a *::after,
+    [data-testid="webpage-citation-pill"] > a::before,
+    [data-testid="webpage-citation-pill"] > a::after,
+    [data-testid="webpage-citation-pill"] > a *::before,
+    [data-testid="webpage-citation-pill"] > a *::after {
+        background: var(--cg-citation-bg) !important;
+        background-color: var(--cg-citation-bg) !important;
+        background-image: none !important;
+        border-color: transparent !important;
+        box-shadow: none !important;
+    }
+
+    /* Citation hover and open states */
+    .webpage-citation-pill:hover > a,
+    .webpage-citation-pill:focus-within > a,
+    .webpage-citation-pill[aria-describedby] > a,
+    [data-testid="webpage-citation-pill"]:hover > a,
+    [data-testid="webpage-citation-pill"]:focus-within > a,
+    [data-testid="webpage-citation-pill"][aria-describedby] > a {
+        background: var(--cg-citation-hover) !important;
+        background-color: var(--cg-citation-hover) !important;
+        color: var(--cg-text) !important;
+        -webkit-text-fill-color: var(--cg-text) !important;
+        box-shadow:
+            0 0 0 1px rgba(199, 210, 255, 0.08),
+            0 0 14px rgba(199, 210, 255, 0.10) !important;
+    }
+
+    .webpage-citation-pill:hover > a *,
+    .webpage-citation-pill:focus-within > a *,
+    .webpage-citation-pill[aria-describedby] > a *,
+    [data-testid="webpage-citation-pill"]:hover > a *,
+    [data-testid="webpage-citation-pill"]:focus-within > a *,
+    [data-testid="webpage-citation-pill"][aria-describedby] > a * {
+        color: var(--cg-text) !important;
+        -webkit-text-fill-color: var(--cg-text) !important;
+    }
+
+    .webpage-citation-pill:hover > a::before,
+    .webpage-citation-pill:hover > a::after,
+    .webpage-citation-pill:hover > a *::before,
+    .webpage-citation-pill:hover > a *::after,
+    .webpage-citation-pill[aria-describedby] > a::before,
+    .webpage-citation-pill[aria-describedby] > a::after,
+    .webpage-citation-pill[aria-describedby] > a *::before,
+    .webpage-citation-pill[aria-describedby] > a *::after {
+        background: var(--cg-citation-hover) !important;
+        background-color: var(--cg-citation-hover) !important;
+    }
+
+    /* Keep citation glow while source popup is open */
+    [data-state="delayed-open"]:has(.webpage-citation-pill)
+    .webpage-citation-pill > a,
+    [data-state="open"]:has(.webpage-citation-pill)
+    .webpage-citation-pill > a,
+    [data-state="delayed-open"]:has([data-testid="webpage-citation-pill"])
+    [data-testid="webpage-citation-pill"] > a,
+    [data-state="open"]:has([data-testid="webpage-citation-pill"])
+    [data-testid="webpage-citation-pill"] > a {
+        box-shadow:
+            0 0 0 1px rgba(199, 210, 255, 0.08),
+            0 0 14px rgba(199, 210, 255, 0.10) !important;
+    }
+
+    /* Source preview popup */
+    [data-radix-popper-content-wrapper]
+    > div[data-side][data-state][class*="bg-token-bg-tooltip"]:has(a[href]) {
+        background: var(--cg-composer-bg) !important;
+        background-color: var(--cg-composer-bg) !important;
+        background-image: none !important;
+        color: var(--cg-text) !important;
+        border: 1px solid var(--cg-composer-border) !important;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.32) !important;
+    }
+
+    [data-radix-popper-content-wrapper]
+    > div[data-side][data-state][class*="bg-token-bg-tooltip"]:has(a[href])
+    [class*="bg-token-main-surface"] {
+        background: transparent !important;
+        background-color: transparent !important;
+        background-image: none !important;
+    }
+
+    [data-radix-popper-content-wrapper]
+    > div[data-side][data-state][class*="bg-token-bg-tooltip"]:has(a[href])
+    a {
+        color: var(--cg-text) !important;
     }
 }
