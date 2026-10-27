@@ -1,5 +1,10 @@
 # ChatGPT Graphite for Stylus
 
+> [!WARNING]
+> This project is no longer maintained.
+>
+> ChatGPT now provides native interface customization options, so further development of this userstyle has been discontinued.
+
 A dark graphite style for ChatGPT designed for Stylus. Changes the main interface colors, backgrounds, user messages, text composer, and selected controls.
 
 ## Comparison
